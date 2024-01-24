@@ -9,13 +9,11 @@ class Solution {
         for(i in str.indices) {
             stack.clear()
             str = s.substring(i until str.length) + s.substring(0 until i)
+            
             for(j in str.indices) {
-                if(str[j]=='['||str[j]=='('||str[j]=='{'){
+                if(str[j]=='['||str[j]=='('||str[j]=='{' || stack.empty()) {
                     stack.push(str[j])
                 }
-                else if(stack.empty()){
-                    stack.push(str[j])
-                } 
                 else {
                     if ((stack.peek() == '[' && str[j] == ']') ||
                     (stack.peek() == '(' && str[j] == ')') ||
@@ -26,9 +24,8 @@ class Solution {
             }
             if(stack.empty()) {
                     answer++
-                }
+            }
         }
-        
         return answer
     }
 }
