@@ -6,7 +6,6 @@ fun main(){
     for(i in 0 until n) {
         val word = readln()
         var last = ' '
-        val charSet = mutableSetOf<Char>()
         var isGroupWord = true
 
 
@@ -14,10 +13,12 @@ fun main(){
             if(last != word[j]) {
                 last = word[j]
 
-                if (!charSet.add(word[j])) {
-                    isGroupWord = false
+                for (k in 0 until j) {
+                    if (word[k] == word[j]) {
+                        isGroupWord = false
+                        break
+                    }
                 }
-
             }
         }
         if (isGroupWord) {
