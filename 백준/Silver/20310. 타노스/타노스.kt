@@ -13,31 +13,30 @@ fun main() = with(System.out.bufferedWriter()) {
         }
     }
 
-    var temp0 = 0
-    var temp1 = 0
+    num0 /= 2
+    num1 /= 2
 
     for(i in n.indices) {
         if(n[i] == '1') {
-            n.removeAt(i)
-            temp1++
+            n[i] = '9'
+            num1--
         }
-        if(num1/2 == temp1) {
+        if(num1 == 0) {
             break
         }
     }
 
     for(i in n.size -1 downTo  0) {
         if(n[i] == '0') {
-            n.removeAt(i)
-            temp0++
+            n[i] = '9'
+            num0--
         }
-        if(num0/2 == temp0) {
+        if(num0 == 0) {
             break
         }
     }
 
-    write(n.joinToString(""))
+    write(n.filterNot { it == '9' }.joinToString(""))
 
     close()
 }
-
