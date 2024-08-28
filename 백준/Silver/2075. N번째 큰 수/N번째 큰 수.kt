@@ -1,17 +1,24 @@
+import java.util.PriorityQueue
+
 val br = System.`in`.bufferedReader()
 
 fun main() = with(System.out.bufferedWriter()) {
     val n = br.readLine().toInt()
-    var array = mutableListOf<Int>()
+    val priorityQueue = PriorityQueue<Int>()
 
 
     for(i in 0 until n) {
-        array.addAll(br.readLine().split(" ").map { it.toInt() })
+        val numbers = br.readLine().split(" ").map { it.toInt() }
+
+        for(number in numbers) {
+            priorityQueue.offer(number)
+
+            if(priorityQueue.size>n) {
+                priorityQueue.poll()
+            }
+        }
     }
 
-    array = array.sortedDescending().toMutableList()
-
-    write("${array[n-1]}")
+    write("${priorityQueue.poll()}")
     close()
 }
-
