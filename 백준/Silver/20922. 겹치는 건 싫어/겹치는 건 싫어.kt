@@ -13,7 +13,7 @@ fun main() = with(System.out.bufferedWriter()) {
         map[a[i]] = map.getOrDefault(a[i],0) +1
 
         while(map[a[i]]!!> k) {
-            map[a[left]] = map[a[left]]!! - 1
+            map[a[left]] = map.getOrDefault(a[left],0) - 1
             left++
         }
 
