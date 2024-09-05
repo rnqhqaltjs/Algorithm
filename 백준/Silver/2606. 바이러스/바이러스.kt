@@ -2,12 +2,9 @@ val br = System.`in`.bufferedReader()
 var count = 0
 
 fun main() = with(System.out.bufferedWriter()) {
-
     val n = br.readLine().toInt()
     val m = br.readLine().toInt()
-
     val graph = Array(n + 1) { mutableListOf<Int>() }
-
     val visited = BooleanArray(n + 1)
 
     for (i in 0 until m) {
@@ -22,16 +19,18 @@ fun main() = with(System.out.bufferedWriter()) {
     }
 
     dfs(1, graph, visited)
+    
+    write("$count")
 
-    write(count.toString())
     close()
 }
+
 fun dfs(c: Int, graph: Array<MutableList<Int>>, v: BooleanArray) {
     v[c] = true
 
     for (i in graph[c]) {
         if (!v[i]) {
-            count ++
+            count++
             dfs(i, graph, v)
         }
     }
