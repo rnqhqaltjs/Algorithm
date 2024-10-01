@@ -8,8 +8,8 @@ fun main() = with(System.out.bufferedWriter()) {
     while (b != a) {
         count++
 
-        a = a / 2 + a % 2
-        b = b / 2 + b % 2
+        a = (a + 1) / 2
+        b = (b + 1) / 2
     }
 
 
