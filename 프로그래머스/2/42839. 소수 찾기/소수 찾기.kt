@@ -7,6 +7,7 @@ class Solution {
             dfs(numbers[i].toString().toInt(), numbers, visited)
             visited[i] = false
         }
+        
         return answer.size
     }
     
