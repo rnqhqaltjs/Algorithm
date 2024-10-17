@@ -2,25 +2,22 @@ class Solution {
     val answer = mutableSetOf<Int>()
     fun solution(numbers: String): Int {
         val visited = BooleanArray(numbers.length)
-        for(i in numbers.indices) {
-            visited[i] = true
-            dfs(numbers[i].toString().toInt(), numbers, visited)
-            visited[i] = false
-        }
+        
+        dfs("",numbers,visited)
         
         return answer.size
     }
     
-    fun dfs(s: Int, nums: String, v: BooleanArray) {
-        if(isPrime(s)) {
-            answer.add(s)
+    fun dfs(s: String, nums: String, v: BooleanArray) {
+        if(s != "" && isPrime(s.toInt())) {
+            answer.add(s.toInt())
         }
         
         for(i in nums.indices) {          
             if(!v[i]) {
-                val c = s.toString() + nums[i].toString()
+                val c = s + nums[i].toString()
                 v[i] = true
-                dfs(c.toInt(), nums, v)
+                dfs(c, nums, v)
                 v[i] = false
             }
         }
