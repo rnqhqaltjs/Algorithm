@@ -5,9 +5,8 @@ class Solution {
         
         for(i in orders) {
             val order = i.toCharArray().sorted().joinToString("") 
-            val visited = BooleanArray(order.length)
             for(j in course) {
-                dfs("", order, j, map, visited, 0)
+                dfs("", order, j, map, 0)
             }
         }
         
@@ -29,17 +28,13 @@ class Solution {
         return answer.sorted().toTypedArray()
     }
     
-    fun dfs(s: String, order: String, course: Int, map: MutableMap<String, Int>, v: BooleanArray, index: Int) {
+    fun dfs(s: String, order: String, course: Int, map: MutableMap<String, Int>, index: Int) {
         if(s.length == course) {
             map[s] = map.getOrDefault(s, 0) + 1
             return
         }
         for (i in index until order.length) {
-            if (!v[i]) {
-                v[i] = true
-                dfs(s + order[i], order, course, map, v, i + 1)
-                v[i] = false
-            }
+            dfs(s + order[i], order, course, map, i + 1)
         }
     }
 }
