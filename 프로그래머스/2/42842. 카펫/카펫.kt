@@ -1,20 +1,19 @@
 class Solution {
     fun solution(brown: Int, yellow: Int): IntArray {
-        var number = brown+yellow
-        var list = IntArray(2)
+        var answer = intArrayOf(0,0)
         
-        for (i in 2..number) {
-            if(number % i == 0) {
-                var height = number/i
-                var width = i
-                
-                if((height-2)*(width-2)==yellow) {
-                    list[0] = height
-                    list[1] = width
-                    break
-                }
+        var sum = brown + yellow
+        
+        for(i in 2..sum) {
+            var width = sum / i
+            var height = i
+            
+            if((width-2) * (height -2) == yellow) {
+                answer[0] = width
+                answer[1] = height
+                break
             }
-        }    
-        return list
+        }
+        return answer
     }
 }
