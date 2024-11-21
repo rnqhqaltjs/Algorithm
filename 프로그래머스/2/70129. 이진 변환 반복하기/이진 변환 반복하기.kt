@@ -1,12 +1,23 @@
 class Solution {
-    fun solution(s: String): IntArray {   
-        var digit = s.replace("0", "").length.toString(2)
-        var repeat = 1
-        var count = s.length - s.replace("0", "").length
-        while(digit.length >1) {
+    fun solution(s: String): IntArray {
+        var str = s
+        
+        var repeat = 0
+        var count = 0
+        
+        while(str!="1") {
+            var temp = ""
             repeat++
-            count += digit.length- digit.replace("0", "").length
-            digit = digit.replace("0", "").length.toString(2)    
+            
+            for(i in str) {
+                if(i=='1') {
+                    temp+=i
+                } else {
+                    count++
+                }
+            }
+            
+            str = temp.length.toString(2)
         }
         
         return intArrayOf(repeat, count)
