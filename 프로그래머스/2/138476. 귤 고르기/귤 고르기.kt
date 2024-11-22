@@ -1,20 +1,20 @@
 class Solution {
     fun solution(k: Int, tangerine: IntArray): Int {
-        var list = IntArray(tangerine.maxOrNull()!! + 1)
-        var k = k
-        var count = 0
-
-        for (i in tangerine) {
-            list[i]++
+        var answer: Int = 0
+        var map = mutableMapOf<Int, Int>()
+        
+        for(i in tangerine) {
+            map[i] = map.getOrDefault(i, 0) + 1
         }
         
-        list = list.sortedDescending().toIntArray()
-
-        for (i in list) {
-            count++
-            k -= i
-            if (k <= 0) {
-                break
+        var sortedMap = map.toList().sortedByDescending { it.second }.toMap()
+        
+        var count = 0
+        var sum = 0
+        for((key, value) in sortedMap) {
+            if(sum<k) {
+                sum+=value
+                count++
             }
         }
         return count
