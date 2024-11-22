@@ -1,12 +1,13 @@
 class Solution {
     fun solution(n: Int): Long {
-        var list = LongArray(n+1)
-        list[0] = 1
-        list[1] = 1
+        var answer: Long = 0
+        var dp = LongArray(n+1)
         
-        for (i in 2..n) {
-            list[i] = (list[i-1] + list[i-2]) %1234567
+        dp[0] = 1
+        dp[1] = 1
+        for(i in 2..n) {
+            dp[i] = (dp[i-1] + dp[i-2]) % 1234567
         }
-        return list[n]
+        return dp[n]
     }
 }
