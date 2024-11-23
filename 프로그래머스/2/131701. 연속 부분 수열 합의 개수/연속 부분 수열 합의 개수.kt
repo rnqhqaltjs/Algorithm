@@ -1,16 +1,15 @@
 class Solution {
     fun solution(elements: IntArray): Int {
-        var list = hashSetOf<Int>()
+        var answer = mutableSetOf<Int>()
         var element = elements + elements
         
-        for(i in 0 until elements.size) {
+        for(i in elements.indices) {
             var num = 0
-            for(j in 0 until elements.size) {
-                num += element[i+j]
-                list.add(num)
+            for(j in elements.indices) {
+                num+= element[i+j]
+                answer.add(num)
             }
-            num=0
         }
-        return list.size
+        return answer.size
     }
 }
