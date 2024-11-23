@@ -2,28 +2,24 @@ import java.util.*
 
 class Solution {
     fun solution(s: String): Int {
-        var str = s
-        val stack = Stack<Char>()
         var answer = 0
-
-        for(i in str.indices) {
+        var stack = Stack<Char>()
+        var str = s
+        
+        for(i in s.indices) {
             stack.clear()
-            str = s.substring(i until str.length) + s.substring(0 until i)
+            str = s.substring(i, s.length) + s.substring(0, i)
             
-            for(j in str.indices) {
-                if(str[j]=='['||str[j]=='('||str[j]=='{' || stack.empty()) {
-                    stack.push(str[j])
-                }
-                else {
-                    if ((stack.peek() == '[' && str[j] == ']') ||
-                    (stack.peek() == '(' && str[j] == ')') ||
-                    (stack.peek() == '{' && str[j] == '}')) {
-                        stack.pop()
-                    }
-                }
+            for(i in str) {
+                if(stack.isEmpty() || i == '(' || i == '[' || i == '{') {
+                    stack.push(i)
+                } else if((stack.peek()== '(' && i==')') || (stack.peek()== '[' && i==']') || (stack.peek()== '{' && i=='}')) {
+                    stack.pop()
+                } 
             }
-            if(stack.empty()) {
-                    answer++
+            
+            if(stack.isEmpty()) {
+                answer++
             }
         }
         return answer
