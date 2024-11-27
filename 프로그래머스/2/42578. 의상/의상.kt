@@ -1,15 +1,15 @@
 class Solution {
     fun solution(clothes: Array<Array<String>>): Int {
-        var list = emptyArray<String>()
-        var map : Map<String,Int> = hashMapOf()
         var answer = 1
+        val map = mutableMapOf<String, Int>()
         
         for(i in clothes) {
-            list+=i[1]
+            map[i[1]] = map.getOrDefault(i[1], 0) + 1
         }
-        map = list.groupingBy { it }.eachCount()
-        map.forEach{ answer*=it.value+1 }
-
-        return answer-1
+        
+        for((key, value) in map) {
+            answer *= value + 1
+        }
+        return answer- 1
     }
 }
