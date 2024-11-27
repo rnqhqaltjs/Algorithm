@@ -3,33 +3,31 @@ import kotlin.math.*
 
 class Solution {
     fun solution(progresses: IntArray, speeds: IntArray): IntArray {
-        val queue: Queue<Int> = LinkedList()
-        var answer = intArrayOf()
+        var answer = mutableListOf<Int>()
+        val q = LinkedList<Int>()
         
         for(i in progresses.indices) {
-            var remain = 100-progresses[i]
-            var speed = speeds[i]
+            val remain = 100 - progresses[i]
             
-            queue.offer(ceil(remain.toDouble()/speed).toInt())
+            q.offer(ceil(remain/speeds[i].toDouble()).toInt())
         }
         
-        while(queue.isNotEmpty()) {
-            var count =1
-            var curValue = queue.poll()
-            while(queue.isNotEmpty()) {
-                if(queue.peek()<=curValue) {
-                    queue.poll()
+        while(q.isNotEmpty()) {
+            var current = q.poll()
+            var count = 1
+            
+            while(q.isNotEmpty()) {
+                if(q.peek()<= current) {
+                    q.poll()
                     count++
                 } else {
                     break
                 }
             }
-            answer+=count
-            println(count)
+            
+            answer.add(count)
         }
         
-        
-        
-        return answer
+        return answer.toIntArray()
     }
 }
