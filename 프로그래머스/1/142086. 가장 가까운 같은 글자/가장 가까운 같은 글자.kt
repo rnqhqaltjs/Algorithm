@@ -1,17 +1,19 @@
 class Solution {
     fun solution(s: String): IntArray {
-        val answer = IntArray(s.length)
+        var answer = mutableListOf<Int>()
         val map = mutableMapOf<Char, Int>()
         
         for(i in s.indices) {
             if(!map.containsKey(s[i])) {
-                answer[i] = -1
                 map[s[i]] = i
+                answer.add(-1)
             } else {
-                answer[i] = i - map[s[i]]!!
+                answer.add(i - map.getOrDefault(s[i],0))
                 map[s[i]] = i
             }
         }
-        return answer
+        
+        
+        return answer.toIntArray()
     }
 }
