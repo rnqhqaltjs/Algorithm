@@ -1,13 +1,13 @@
 class Solution {
     fun solution(food: IntArray): String {
-        var answer: String = ""
-        for(i in 1 until food.size) {
-            for (j in 1..food[i]/2) {
-                answer+=i
+        var answer = "0"
+        
+        for(i in food.size - 1 downTo 1) {
+            for(j in 1..food[i]/2) {
+                answer = i.toString() + answer
+                answer = answer + i.toString()
             }
         }
-
-        
-        return answer+ 0*food[0] + answer.reversed()
+        return answer
     }
 }
