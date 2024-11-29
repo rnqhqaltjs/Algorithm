@@ -1,17 +1,21 @@
 class Solution {
     fun solution(sizes: Array<IntArray>): Int {
-        var big = 0
-        var small = 0
+        var answer: Int = 0
+        var bigList = mutableListOf<Int>()
+        var smallList = mutableListOf<Int>()
         
-        for(i in sizes.indices) {
-            if(sizes[i][0]>sizes[i][1]) {
-                big = maxOf(big, sizes[i][0])
-                small = maxOf(small, sizes[i][1])
+        for(i in sizes) {
+            var (a, b) = i
+            
+            if(a>b) {
+                bigList.add(a)
+                smallList.add(b)
             } else {
-                big = maxOf(big, sizes[i][1])
-                small = maxOf(small, sizes[i][0])
+                smallList.add(a)
+                bigList.add(b)
             }
         }
-        return big * small
+        
+        return bigList.maxOf{ it } * smallList.maxOf{ it }
     }
 }
