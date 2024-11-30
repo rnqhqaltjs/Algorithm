@@ -1,21 +1,20 @@
 class Solution {
     fun solution(name: Array<String>, yearning: IntArray, photo: Array<Array<String>>): IntArray {
-        var mapData: MutableMap<String, Int> = HashMap()
-        var answer: IntArray = intArrayOf()
+        var answer = mutableListOf<Int>()
+        val map = mutableMapOf<String, Int>()
         
         for(i in name.indices) {
-            mapData[name[i]] = yearning[i]
+            map[name[i]] = yearning[i]
         }
         
         for(i in photo.indices) {
-            var count = 0
+            var sum = 0
             for(j in photo[i].indices) {
-                count+= mapData.get(photo[i][j]) ?:0
+                sum+=map.getOrDefault(photo[i][j],0)
             }
-            answer+= count
-            count = 0
+            
+            answer.add(sum)
         }
-        
-        return answer
+        return answer.toIntArray()
     }
 }
