@@ -1,15 +1,12 @@
 class Solution {
     fun solution(k: Int, m: Int, score: IntArray): Int {
-        var list = score.sortedDescending()
         var answer: Int = 0
+        var appleList = score.sortedDescending().toMutableList()
         
-        for(i in 0 until list.size step(m)) {
-            try {
-                answer+=list.slice(i until i+m).last()*m
-            } catch (e:IndexOutOfBoundsException) {
-                break
-            }
+        for(i in m-1 until score.size step(m)) {
+            answer += (appleList[i] * m)
         }
+        
         return answer
     }
 }
