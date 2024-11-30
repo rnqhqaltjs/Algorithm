@@ -1,17 +1,17 @@
 class Solution {
     fun solution(k: Int, score: IntArray): IntArray {
-        var answer: IntArray = intArrayOf()
-        var list: IntArray = intArrayOf()
+        var answer = mutableListOf<Int>()
+        var list = mutableListOf<Int>()
+        
         
         for(i in score) {
-            list+=i
-            list.sortDescending()
+            list.add(i)
+            list.sort()
             if(list.size>k) {
-                answer+= list[k-1]
-            } else {
-                answer+=list.last()
-            }  
+                list.removeFirst()
+            }
+            answer.add(list[0])
         }
-        return answer
+        return answer.toIntArray()
     }
 }
