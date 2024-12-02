@@ -7,12 +7,10 @@ class Solution {
         for(i in lottos.indices) {
             if(lottos[i] == 0) {
                 zero_count++
-                println(zero_count)
             }    
             for(j in win_nums.indices) {
                 if(lottos[i] == win_nums[j]) {
                     count++
-                    println(count)
                 }
             }
         }
