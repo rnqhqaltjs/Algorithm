@@ -1,27 +1,33 @@
 class Solution {
     fun solution(lottos: IntArray, win_nums: IntArray): IntArray {
         var answer: IntArray = intArrayOf()
+        var zero_count = 0
         var count = 0
-        var iCount = 0
-        for(i in lottos) {
-            if(win_nums.contains(i)) {
-                count++
+        
+        for(i in lottos.indices) {
+            if(lottos[i] == 0) {
+                zero_count++
+                println(zero_count)
+            }    
+            for(j in win_nums.indices) {
+                if(lottos[i] == win_nums[j]) {
+                    count++
+                    println(count)
+                }
             }
-            if(i==0) {
-                iCount++
-            }
-        }
-        if(count!=0) {
-            answer+=7-count-iCount
-            answer+=7-count
-        } else if(count==0 && iCount==0) {
-            answer+=6-count-iCount
-            answer+=6-count
-        } else {
-            answer+=7-count-iCount
-            answer+=6-count
         }
         
-        return answer
+        var max_rank = 7 - (count + zero_count)
+        var min_rank = 7 - count
+        
+        if(max_rank == 7) {
+            max_rank = 6
+        } 
+        
+        if(min_rank == 7) {
+            min_rank = 6
+        }
+        
+        return intArrayOf(max_rank, min_rank)
     }
 }
