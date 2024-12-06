@@ -1,22 +1,20 @@
 import java.util.*
+
 class Solution {
     fun solution(order: IntArray): Int {
-        var stack = Stack<Int>()
-        
+        var answer: Int = 0
+        val stack = Stack<Int>()
         var idx = 0
-        var num = 0
         
-        while(idx < order.size) {
-            if(num < order[idx]) {
-                num++
-                stack.push(num)
-            } else if (stack.isNotEmpty() && stack.peek() == order[idx]) {
-                stack.pop()
+        for(i in 1..order.size) {
+            stack.push(i)
+            
+            while(stack.isNotEmpty() && stack.peek() == order[idx]) {
                 idx++
-            } else {
-                return idx
-            }     
-        }
+                stack.pop()
+            }
+        } 
+        
         return idx
     }
 }
