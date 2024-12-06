@@ -2,31 +2,37 @@ class Solution {
     fun solution(record: Array<String>): Array<String> {
         var answer = mutableListOf<String>()
         val map = mutableMapOf<String, String>()
-        val nickname = mutableListOf<Pair<String,Boolean>>()
+        val list = mutableListOf<Pair<String, Boolean>>()
         
         for(i in record) {
-            val list = i.split(" ")
+            val i = i.split(" ")
+            val state = i[0]
+            val uid = i[1]
             
-            when(list[0]) {
+            when(state) {
                 "Enter" -> {
-                    nickname.add(list[1] to true)
-                    map[list[1]] = list[2]
+                    val name = i[2]
+                    list.add(uid to true)
+                    map[uid] = name
                 }
+                
                 "Leave" -> {
-                    nickname.add(list[1] to false)
+                    list.add(uid to false)
                 }
+                
                 "Change" -> {
-                    map[list[1]] = list[2]
+                    val name = i[2]
+                    map[uid] = name
                 }
             }
+            
         }
         
-        for(i in nickname) {
-            val (a,b) = i
-            if(b == true) {
-                answer.add("${map[a]}님이 들어왔습니다.")
+        for(i in list) {
+            if(i.second) {
+                answer.add("${map[i.first]!!}님이 들어왔습니다.")
             } else {
-                answer.add("${map[a]}님이 나갔습니다.")
+                answer.add("${map[i.first]!!}님이 나갔습니다.")
             }
         }
         return answer.toTypedArray()
