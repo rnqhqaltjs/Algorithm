@@ -2,21 +2,22 @@ import java.util.*
 
 class Solution {
     fun solution(number: String, k: Int): String {
+        var answer = ""
         val stack = Stack<Char>()
         var count = 0
+        
         for(i in number) {
-            while(stack.isNotEmpty() && stack.peek()<i && count<k) {
+            while(stack.isNotEmpty() && count < k && stack.peek()<i) {
                 stack.pop()
                 count++
             }
-            stack.add(i)
+            stack.push(i)
         }
         
-        while (count < k) {
+        while(count< k) {
             stack.pop()
             count++
         }
-        
-        return stack.joinToString("")
+        return stack.toArray().joinToString("")
     }
 }
