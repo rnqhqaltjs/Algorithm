@@ -7,11 +7,11 @@ class Solution {
         for(i in book_time) {
             val (start, end) = i
             var startTime = start.split(":") .map { it.toInt() }.let { it[0] * 60 + it[1] }
-            var endTime = end.split(":") .map { it.toInt() }.let { it[0] * 60 + it[1] }
+            var endTime = end.split(":") .map { it.toInt() }.let { it[0] * 60 + it[1] } + 10
             var flag = 0
             
             for(i in rooms.indices) {
-                if(rooms[i] + 10 <= startTime) {
+                if(rooms[i]<= startTime) {
                     rooms[i] = endTime
                     flag = 1
                     break
