@@ -26,7 +26,6 @@ class Solution {
             }
         }
         
-        
         return answer / jobs.size
     }
 }
