@@ -4,7 +4,7 @@ class Solution {
         times.sort()
         
         var left: Long = 0
-        var right: Long = times[times.size - 1] * n.toLong()
+        var right: Long = (times[times.size - 1] * n).toLong()
         
         while(left <= right) {
             var mid = (left + right) / 2
@@ -14,10 +14,10 @@ class Solution {
                 complete += mid / i
             }
             
-            if(complete < n) {
-                left = mid + 1
-            } else {
+            if(complete >= n) {
                 right = mid - 1
+            } else {
+                left = mid + 1
             }
         }
         
