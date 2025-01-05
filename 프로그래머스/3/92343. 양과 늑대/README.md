@@ -1,10 +1,10 @@
 # [level 3] 양과 늑대 - 92343 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/92343) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/92343?language=kotlin) 
 
 ### 성능 요약
 
-메모리: 63.7 MB, 시간: 4.75 ms
+메모리: 64 MB, 시간: 2.15 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 06일 02:28:29
+2025년 01월 06일 02:38:12
 
 ### 문제 설명
 
