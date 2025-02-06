@@ -1,13 +1,12 @@
 class Solution {
     fun solution(s: String): String {
-        var max = Int.MIN_VALUE
-        var min = Int.MAX_VALUE
-        var array = s.split(" ").map{ it.toInt() }
+        var answer = ""
         
-        for(i in array) {
-            min = minOf(min, i)
-            max = maxOf(max, i)
-        }
-        return "$min $max"
+        var array = s.split(" ").map { it.toInt() }
+        print(array)
+        array = array.sorted()
+        
+        
+        return "${array[0]} ${array[array.size - 1]}"
     }
 }
