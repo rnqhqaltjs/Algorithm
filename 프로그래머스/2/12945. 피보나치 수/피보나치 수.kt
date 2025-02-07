@@ -1,14 +1,15 @@
 class Solution {
     fun solution(n: Int): Int {
         var answer = 0
-        var list = IntArray(n+1)
         
-        list[0] = 0
-        list[1] = 1
+        var dp = IntArray(n + 1) { 0 }
+        
+        dp[0] = 0
+        dp[1] = 1
         
         for(i in 2..n) {
-            list[i] = (list[i-1] + list[i-2]) % 1234567
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 1234567
         }
-        return list[n] 
+        return dp[n]
     }
 }
