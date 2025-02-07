@@ -1,25 +1,26 @@
 class Solution {
     fun solution(s: String): IntArray {
-        var str = s
+        var answer: IntArray = intArrayOf()
         
-        var repeat = 0
+        var s = s
         var count = 0
+        var repeat = 0
         
-        while(str!="1") {
-            var temp = ""
+        while(s != "1") {
             repeat++
+            var newStr = ""
             
-            for(i in str) {
-                if(i=='1') {
-                    temp+=i
-                } else {
+            for(i in s) {
+                if(i == '0') {
                     count++
+                } else {
+                    newStr+=i
                 }
             }
             
-            str = temp.length.toString(2)
+            s = newStr.length.toString(2)
         }
-        
+
         return intArrayOf(repeat, count)
     }
 }
