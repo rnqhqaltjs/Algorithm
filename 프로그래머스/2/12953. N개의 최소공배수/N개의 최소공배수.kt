@@ -1,20 +1,20 @@
 class Solution {
     fun solution(arr: IntArray): Int {
         var answer = 0
-        var first = arr[0]
+        var current = arr[0]
+        
         for(i in 1 until arr.size) {
-            answer =  first * arr[i] / gcd(first , arr[i])
-            
-            first = answer
+            current = current * arr[i] / gcd(current, arr[i])
         }
-        return answer
+        return current
     }
     
-    fun gcd(a: Int, b: Int): Int {
-        if(b!=0) {
-            return gcd(b, a%b)
+    fun gcd(a: Int, b: Int) : Int {
+        var r = a % b
+        if(r == 0) {
+            return b
         } else {
-            return a
+            return gcd(b,r)
         }
     }
 }
