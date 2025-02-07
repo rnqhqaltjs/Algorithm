@@ -3,14 +3,14 @@ import java.util.*
 class Solution {
     fun solution(s: String): Int {
         var answer = 0
-        var stack = Stack<Char>()
-        var str = s
         
-        for(i in s.indices) {
-            stack.clear()
-            str = s.substring(i, s.length) + s.substring(0, i)
+        
+        var s = s
+        for(i in 1 .. s.length) {
+            val stack = Stack<Char>()
+            s = s[s.length - 1] + s.substring(0, s.length - 1)
             
-            for(i in str) {
+            for(i in s) {
                 if(stack.isEmpty() || i == '(' || i == '[' || i == '{') {
                     stack.push(i)
                 } else if((stack.peek()== '(' && i==')') || (stack.peek()== '[' && i==']') || (stack.peek()== '{' && i=='}')) {
@@ -22,6 +22,7 @@ class Solution {
                 answer++
             }
         }
+        
         return answer
     }
 }
