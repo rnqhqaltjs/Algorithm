@@ -1,16 +1,14 @@
 class Solution {
     fun solution(brown: Int, yellow: Int): IntArray {
-        var answer = intArrayOf(0,0)
+        var answer = intArrayOf()
+        var area = brown + yellow
         
-        var sum = brown + yellow
-        
-        for(i in 2..sum) {
-            var width = sum / i
+        for(i in 2..area) {
             var height = i
+            var width = area / i
             
-            if((width-2) * (height -2) == yellow) {
-                answer[0] = width
-                answer[1] = height
+            if(yellow == (height - 2) * (width - 2)) {
+                answer = intArrayOf(width, height)
                 break
             }
         }
