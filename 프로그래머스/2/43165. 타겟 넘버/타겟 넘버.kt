@@ -1,20 +1,20 @@
-var answer = 0
-
 class Solution {
+    var answer = 0
     fun solution(numbers: IntArray, target: Int): Int {
-        dfs(0, numbers, target, 0)
         
+        
+        dfs(0, 0, numbers, target)
         return answer
     }
     
-    fun dfs(count: Int, numbers: IntArray, target: Int, result: Int) {
-        if(count == numbers.size) {
-            if(result == target) {
+    fun dfs(num: Int, count: Int, number: IntArray, e: Int) {
+        if(count == number.size) {
+            if(num == e) {
                 answer++
             }
         } else {
-            dfs(count + 1, numbers, target, result + numbers[count])
-            dfs(count + 1, numbers, target, result - numbers[count])
-        }
+            dfs(num - number[count], count + 1, number, e)
+            dfs(num + number[count], count + 1, number, e)
+        } 
     }
 }
