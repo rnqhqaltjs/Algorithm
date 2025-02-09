@@ -2,7 +2,7 @@ class Solution {
     fun solution(want: Array<String>, number: IntArray, discount: Array<String>): Int {
         var answer: Int = 0
         val wantMap = mutableMapOf<String, Int>()
-         
+        
         for(i in want.indices) {
             wantMap[want[i]] = number[i]
         }
@@ -17,6 +17,7 @@ class Solution {
                 answer++
             }
         }
+        
         return answer
     }
 }
