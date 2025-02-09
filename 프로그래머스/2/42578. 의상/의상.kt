@@ -1,6 +1,7 @@
 class Solution {
     fun solution(clothes: Array<Array<String>>): Int {
         var answer = 1
+        
         val map = mutableMapOf<String, Int>()
         
         for(i in clothes) {
@@ -8,8 +9,9 @@ class Solution {
         }
         
         for((key, value) in map) {
-            answer *= value + 1
+            answer*= (value + 1)
         }
-        return answer- 1
+        
+        return answer - 1
     }
 }
